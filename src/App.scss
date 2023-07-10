@@ -13,21 +13,27 @@ img {
 .wrapper {
   color: $color_gray300;
   // max-width: 1440px;
-  padding: 15px;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 .container {
   max-width: 800px;
   margin: 0px auto;
   font-weight: 900;
+  padding: 15px;
 }
 
-// LOGO styles
+// HEADER styles
+
+.header {
+  background-color: $gray-700;
+  min-height: 100%;
+}
 
 .logo {
-  margin-top: 75px / 800px * 100%;
-  margin-bottom: 55px / 800px * 100%;;
-  // text-align: center;
+  padding-top: 75px / 800px * 100%;
+  padding-bottom: 50px / 800px * 100%;
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -35,9 +41,9 @@ img {
     font-size: 40px;
     font-weight: 900;
     color: $secondary-color;
-      span {
-          color: $primary-color;
-        }
+    span {
+      color: $primary-color;
+    }
   }
   &_img {
     max-width: 100px;
@@ -45,6 +51,60 @@ img {
     img {
       width: 22px;
       height: 36px;
+    }
+  }
+}
+
+// INPUT TASK
+
+.inputTask {
+  text-align: center;
+  // margin-top: -30px;
+
+  &_input {
+    margin-right: 20px;
+    width: 640px / 800px * 100%;
+    padding: 16px;
+    background-color: $gray-500;
+    border: 1px solid $gray-700;
+    border-radius: 8px;
+    outline: none;
+
+    &:focus {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &_button {
+    width: 90px;
+    padding: 16px;
+    font-size: 14px;
+    background-color: $primary-color;
+    color: $btn-text-color;
+    border-radius: 8px;
+    border: none;
+    text-align: left;
+    position: relative;
+
+    @media (max-width: 400px) {
+      padding: 10px;
+    }
+
+    &:after {
+      content: '+';
+      display: block;
+      border: 1px $btn-text-color solid;
+      border-radius: 50%;
+      width: 16px;
+      text-align: center;
+      position: absolute;
+      top: 33%;
+      left: 75%;
+
+      @media (max-width: 400px) {
+        top: 25%;
+        left: 70%;
+      }
     }
   }
 }
