@@ -8,9 +8,7 @@ import Wrapper from './Wrapper'
 
 function App() {
   const [tasksList, setTasksList] = useState([])
-
   const [taskText, setTaskText] = useState('')
-  console.log(taskText)
 
   const addTask = () => {
     if (taskText) {
@@ -18,7 +16,6 @@ function App() {
       const newTodosList = [newTodo, ...tasksList]
       setTasksList(newTodosList)
       setTaskText('')
-      // tasksList.push({ id: tasksList.length, text: text })
       console.log(tasksList)
     }
   }
