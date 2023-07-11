@@ -14,14 +14,16 @@ img {
   color: $color_gray300;
   // max-width: 1440px;
   font-size: 16px;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .container {
   max-width: 800px;
   margin: 0px auto;
   font-weight: 900;
-  padding: 15px;
+  padding: 0 15px;
+
+  // border: 1px solid white;
 }
 
 // HEADER styles
@@ -32,8 +34,8 @@ img {
 }
 
 .logo {
-  padding-top: 75px / 800px * 100%;
-  padding-bottom: 50px / 800px * 100%;
+  padding-top: calc(75 / 800 * 100%);
+  padding-bottom: calc(50 / 800 * 100%);
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -57,26 +59,44 @@ img {
 
 // INPUT TASK
 
+.inputBlock {
+  margin-bottom: calc(65 / 800 * 100%);
+}
+
 .inputTask {
-  text-align: center;
-  // margin-top: -30px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: -25px;
 
   &_input {
-    margin-right: 20px;
-    width: 640px / 800px * 100%;
+    font-size: 16px;
+    width: 100%;
     padding: 16px;
     background-color: $gray-500;
     border: 1px solid $gray-700;
     border-radius: 8px;
-    outline: none;
+    overflow: auto;
 
     &:focus {
+      outline: none;
       border: 1px solid $primary-color;
+      color: $black;
+      background-color: $color_gray300;
+
+      &::placeholder {
+        color: $black;
+      }
+    }
+
+    &::placeholder {
+      color: $color_gray300;
+      font-size: 16px;
     }
   }
 
   &_button {
-    width: 90px;
+    min-width: 90px;
     padding: 16px;
     font-size: 14px;
     background-color: $primary-color;
@@ -93,18 +113,121 @@ img {
     &:after {
       content: '+';
       display: block;
-      border: 1px $btn-text-color solid;
+      outline: none;
+      border: 2px $btn-text-color solid;
       border-radius: 50%;
       width: 16px;
       text-align: center;
       position: absolute;
-      top: 33%;
-      left: 75%;
+      top: 30%;
+      left: 70%;
+    }
+  }
+}
 
-      @media (max-width: 400px) {
-        top: 25%;
-        left: 70%;
+// STATUS BAR
+
+.status-text {
+  display: inline;
+  margin-right: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.status-number {
+  display: inline;
+  padding: 2px 8px;
+  background-color: $gray-400;
+  color: $gray-200;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  .createdTasks {
+    &_text {
+      color: $blue;
+    }
+  }
+  .tasksCompleted {
+    &_text {
+      color: $purple;
+    }
+  }
+}
+
+// TASK
+
+.taskBox {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  &_customCheckbox {
+    cursor: pointer;
+    border-radius: 50%;
+
+    input {
+      display: none;
+      padding: 0;
+      height: initial;
+      width: initial;
+      margin-bottom: 0;
+      cursor: pointer;
+
+      &:checked + label::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: 10px;
+        width: 6px;
+        height: 14px;
+        border: solid $gray-100;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+
+      &:checked + label::before {
+        background-color: $PurpleDark;
       }
     }
+
+    label {
+      position: relative;
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        -webkit-appearance: none;
+        background-color: transparent;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 2px solid $blue;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &_text {
+    color: $gray-100;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  &_taskBox_deleteIcon {
+  }
+
+  img {
+    width: 24px;
+    height: 100%;
   }
 }
