@@ -1,5 +1,9 @@
 @import './variables';
 
+body {
+  background-color: $appBG-color;
+}
+
 img {
   width: 100%;
 }
@@ -160,12 +164,42 @@ img {
   }
 }
 
+// TASK LIST
+
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.deleteAllTodos-box {
+  position: relative;
+  height: 60px;
+  .deleteAllTasks-btn {
+    padding: 16px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+    background-color: $red;
+    color: $gray-100;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
 // TASK
 
 .taskBox {
   display: flex;
   gap: 12px;
-  align-items: center;
+  // justify-content: space-between;
+  background-color: $gray-400;
+  border-radius: 8px;
+  padding: 16px;
 
   // custom checkbox
   &_customCheckbox {
@@ -184,13 +218,18 @@ img {
         content: '';
         display: block;
         position: absolute;
-        top: 2px;
+        top: 4px;
         left: 8px;
-        width: 6px;
-        height: 14px;
+        width: 5px;
+        height: 12px;
         border: solid $gray-100;
         border-width: 0 2px 2px 0;
         transform: rotate(45deg);
+
+        @media (max-width: 400px) {
+          top: 6px;
+          left: 8px;
+        }
       }
 
       &:checked + label::before {
@@ -215,6 +254,7 @@ img {
         position: relative;
         vertical-align: middle;
         cursor: pointer;
+        margin-top: 5px;
       }
     }
   }
@@ -225,6 +265,8 @@ img {
     font-size: 14px;
     line-height: 1.5;
     text-align: justify;
+    align-self: center;
+    width: 100%;
   }
 
   &_taskBox_deleteIcon {
@@ -233,5 +275,31 @@ img {
   img {
     width: 30px;
     height: 30px;
+  }
+}
+
+// clipboard
+
+.clipboard {
+  text-align: center;
+
+  &_title {
+    width: 330px;
+    margin: 0px auto;
+    line-height: 1.5;
+
+    span {
+      font-weight: 400;
+      text-align: center;
+    }
+  }
+
+  &_image {
+    margin-bottom: 20px;
+  }
+
+  img {
+    width: 60px;
+    height: 60px;
   }
 }

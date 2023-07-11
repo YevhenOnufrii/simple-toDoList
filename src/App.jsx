@@ -7,15 +7,35 @@ import TasksList from './TasksList'
 import Wrapper from './Wrapper'
 
 function App() {
+  const [tasksList, setTasksList] = useState([])
+
   const [taskText, setTaskText] = useState('')
   console.log(taskText)
+
+  const addTask = () => {
+    if (taskText) {
+      const newTodo = { id: tasksList.length, text: taskText }
+      const newTodosList = [newTodo, ...tasksList]
+      setTasksList(newTodosList)
+      setTaskText('')
+      // tasksList.push({ id: tasksList.length, text: text })
+      console.log(tasksList)
+    }
+  }
 
   return (
     <div className="app">
       <Wrapper>
         <Header />
-        <InputTask {...{ value: taskText, onInput: e => setTaskText(e.target.value) }} />
-        <TasksList />
+        <InputTask
+          {...{
+            value: taskText,
+            onInput: e => setTaskText(e.target.value),
+            placeholder: 'Input your task',
+            onClick: () => addTask(),
+          }}
+        />
+        <TasksList {...{ tasksList, setTasksList: setTasksList }} />
       </Wrapper>
     </div>
   )
