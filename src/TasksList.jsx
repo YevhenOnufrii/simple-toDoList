@@ -9,12 +9,12 @@ function Task() {
         <input className="taskBox_input" type="checkbox" id="check" />
         <label htmlFor="check" className="taskBox_label"></label>
       </div>
-      {/* <input type="checkbox" className="taskBox_check" />
+      {/* task text */}
       <h3 className="taskBox_text">
         Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames
         integer. Duis vel sed fames integer. Duis vel sed fames integer. Duis vel sed fames integer.
       </h3>
-      <img src="../public/trash.svg" alt="delete icon" className="taskBox_deleteIcon" /> */}
+      <img src="../public/trash.svg" alt="delete icon" className="taskBox_deleteIcon" />
     </li>
   )
 }

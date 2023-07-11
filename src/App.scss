@@ -167,6 +167,7 @@ img {
   gap: 12px;
   align-items: center;
 
+  // custom checkbox
   &_customCheckbox {
     cursor: pointer;
     border-radius: 50%;
@@ -184,7 +185,7 @@ img {
         display: block;
         position: absolute;
         top: 2px;
-        left: 10px;
+        left: 8px;
         width: 6px;
         height: 14px;
         border: solid $gray-100;
@@ -194,6 +195,7 @@ img {
 
       &:checked + label::before {
         background-color: $PurpleDark;
+        border: 2px solid $PurpleDark;
       }
     }
 
@@ -205,8 +207,8 @@ img {
         content: '';
         -webkit-appearance: none;
         background-color: transparent;
-        width: 25px;
-        height: 25px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
         border: 2px solid $blue;
         display: inline-block;
@@ -221,13 +223,15 @@ img {
     color: $gray-100;
     font-weight: 400;
     font-size: 14px;
+    line-height: 1.5;
+    text-align: justify;
   }
 
   &_taskBox_deleteIcon {
   }
 
   img {
-    width: 24px;
-    height: 100%;
+    width: 30px;
+    height: 30px;
   }
 }
