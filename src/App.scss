@@ -114,6 +114,13 @@ img {
       padding: 10px;
     }
 
+    &:hover {
+      background-color: $primary-color-hover;
+    }
+    &:active {
+      background-color: $secondary-color;
+    }
+
     &:after {
       content: '+';
       display: block;
@@ -188,6 +195,10 @@ img {
     position: absolute;
     top: 0;
     right: 0;
+
+    &:hover {
+      background-color: $red-hover;
+    }
   }
 }
 
