@@ -1,0 +1,33 @@
+@import '../../css/variables.scss';
+.status-text {
+  display: inline;
+  margin-right: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.status-number {
+  display: inline;
+  padding: 2px 8px;
+  background-color: $gray-400;
+  color: $gray-200;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  .createdTasks {
+    &_text {
+      color: $blue;
+    }
+  }
+  .tasksCompleted {
+    &_text {
+      color: $purple;
+    }
+  }
+}

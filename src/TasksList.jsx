@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import Clipboard from './Clipboard/Clipboard'
-import Container from './Container'
+import Clipboard from './components/Clipboard/Clipboard'
+import Container from './components/Container_/Container'
+import ProgressInfo from './components/ProgressInfo/ProgressInfo'
 
 function Task({ id, text, deleteTask, completeTask }) {
   // console.log(tasksList, 'Task')
@@ -30,29 +31,6 @@ function Task({ id, text, deleteTask, completeTask }) {
         </svg>
       </div>
     </li>
-  )
-}
-
-function ProgressInfo({ totalTodos, completedTodos }) {
-  return (
-    <>
-      <div className="statusBar">
-        <div className="createdTasks">
-          <h3 className="createdTasks_text status-text">Created tasks</h3>
-          <div className="createdTasks_number status-number">
-            <span>{totalTodos}</span>
-          </div>
-        </div>
-        <div className="tasksCompleted">
-          <h3 className="tasksCompleted_text status-text">Completed</h3>
-          <div className="tasksCompleted_numbers status-number">
-            <span className="tasksCompleted_number-completed">
-              {completedTodos} out of {totalTodos + completedTodos}
-            </span>
-          </div>
-        </div>
-      </div>
-    </>
   )
 }
 

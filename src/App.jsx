@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.scss'
-import Header from './Header/Header'
-import InputTask from './InputTask'
 import TasksList from './TasksList'
-import Wrapper from './Wrapper'
+import Header from './components/Header/Header'
+import InputTask from './components/Input/InputTask'
+import Wrapper from './components/Wrapper/Wrapper'
 
 function App() {
   const [tasksList, setTasksList] = useState([])
@@ -27,7 +27,6 @@ function App() {
   console.log(completedTasks, 'completedTasks')
 
   const deleteTask = (event, id) => {
-    console.log('Hola')
     event.stopPropagation()
     setTasksList(tasksList.filter(el => el.id !== id))
   }

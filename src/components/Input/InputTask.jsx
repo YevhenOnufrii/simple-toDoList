@@ -1,4 +1,5 @@
-import Container from './Container'
+import Container from '../Container_/Container'
+import './inputTask.scss'
 
 export default function InputTask({ onClick, ...props }) {
   return (

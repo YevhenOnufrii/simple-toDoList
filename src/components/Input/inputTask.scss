@@ -1,0 +1,74 @@
+@import '../../css/variables.scss';
+
+.inputBlock {
+  margin-bottom: calc(30 / 800 * 100%);
+}
+
+.inputTask {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: -25px;
+
+  &_input {
+    font-size: 16px;
+    width: 100%;
+    padding: 16px;
+    background-color: $gray-500;
+    border: 1px solid $gray-700;
+    border-radius: 8px;
+    overflow: auto;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $primary-color;
+      color: $black;
+      background-color: $color_gray300;
+
+      &::placeholder {
+        color: $black;
+      }
+    }
+
+    &::placeholder {
+      color: $color_gray300;
+      font-size: 16px;
+    }
+  }
+
+  &_button {
+    min-width: 90px;
+    padding: 16px;
+    font-size: 14px;
+    background-color: $primary-color;
+    color: $btn-text-color;
+    border-radius: 8px;
+    border: none;
+    text-align: left;
+    position: relative;
+
+    @media (max-width: 400px) {
+      padding: 10px;
+    }
+
+    &:hover {
+      background-color: $primary-color-hover;
+    }
+    &:active {
+      background-color: $secondary-color;
+    }
+
+    &:after {
+      content: '+';
+      display: block;
+      outline: none;
+      border: 2px $btn-text-color solid;
+      border-radius: 50%;
+      width: 16px;
+      text-align: center;
+      position: absolute;
+      top: 30%;
+      left: 70%;
+    }
+  }
+}
