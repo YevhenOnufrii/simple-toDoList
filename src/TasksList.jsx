@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Clipboard from './Clipboard'
+import Clipboard from './Clipboard/Clipboard'
 import Container from './Container'
 
 function Task({ id, text, deleteTask, completeTask }) {
@@ -33,7 +33,7 @@ function Task({ id, text, deleteTask, completeTask }) {
   )
 }
 
-function StatusBar({ totalTodos, completedTodos }) {
+function ProgressInfo({ totalTodos, completedTodos }) {
   return (
     <>
       <div className="statusBar">
@@ -47,7 +47,7 @@ function StatusBar({ totalTodos, completedTodos }) {
           <h3 className="tasksCompleted_text status-text">Completed</h3>
           <div className="tasksCompleted_numbers status-number">
             <span className="tasksCompleted_number-completed">
-              {completedTodos} out of {totalTodos}
+              {completedTodos} out of {totalTodos + completedTodos}
             </span>
           </div>
         </div>
@@ -65,7 +65,7 @@ export default function TasksList({
 }) {
   return (
     <Container>
-      <StatusBar {...{ totalTodos: tasksList.length, completedTodos: completedTasks.length }} />
+      <ProgressInfo {...{ totalTodos: tasksList.length, completedTodos: completedTasks.length }} />
 
       {!tasksList.length && <Clipboard />}
 

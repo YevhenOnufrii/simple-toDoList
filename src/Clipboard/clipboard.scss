@@ -1,0 +1,23 @@
+.clipboard {
+  text-align: center;
+
+  &_title {
+    width: 330px;
+    margin: 0px auto;
+    line-height: 1.5;
+
+    span {
+      font-weight: 400;
+      text-align: center;
+    }
+  }
+
+  &_image {
+    margin-bottom: 20px;
+  }
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}

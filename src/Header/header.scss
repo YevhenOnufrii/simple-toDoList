@@ -1,0 +1,30 @@
+@import '../css/variables.scss';
+
+.header {
+  background-color: $gray-700;
+  min-height: 100%;
+}
+
+.logo {
+  padding-top: calc(75 / 800 * 100%);
+  padding-bottom: calc(75 / 800 * 100%);
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  h1 {
+    font-size: 40px;
+    font-weight: 900;
+    color: $secondary-color;
+    span {
+      color: $primary-color;
+    }
+  }
+  &_img {
+    max-width: 100px;
+    margin-top: 5px;
+    img {
+      width: 22px;
+      height: 36px;
+    }
+  }
+}

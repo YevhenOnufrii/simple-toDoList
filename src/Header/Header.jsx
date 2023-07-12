@@ -1,5 +1,6 @@
-import Container from './Container'
-import Logo from './Logo'
+import Container from '../Container'
+import Logo from '../Logo'
+import './header.scss'
 
 export default function Header() {
   return (

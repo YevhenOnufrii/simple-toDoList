@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.scss'
-import Header from './Header'
+import Header from './Header/Header'
 import InputTask from './InputTask'
 import TasksList from './TasksList'
 import Wrapper from './Wrapper'
@@ -18,6 +18,11 @@ function App() {
       setTaskText('')
     }
   }
+
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') addTask()
+  }
+
   console.log(tasksList)
   console.log(completedTasks, 'completedTasks')
 
@@ -28,7 +33,7 @@ function App() {
   }
 
   const completeTask = event => {
-    // event.stopPropagation()
+    event.stopPropagation()
     const id = parseInt(event.target.id)
     const newCompletedTask = tasksList.filter(el => el.id === id)
     const newCompletedList = [newCompletedTask, ...completedTasks]
@@ -44,9 +49,10 @@ function App() {
         <InputTask
           {...{
             value: taskText,
-            onInput: e => setTaskText(e.target.value),
             placeholder: 'Input your task',
+            onInput: e => setTaskText(e.target.value),
             onClick: () => addTask(),
+            onKeyDown: e => handleKeyDown(e),
           }}
         />
 

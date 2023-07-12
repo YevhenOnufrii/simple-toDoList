@@ -1,3 +1,4 @@
+import './clipboard.scss'
 export default function Clipboard() {
   return (
     <div className="clipboard">
