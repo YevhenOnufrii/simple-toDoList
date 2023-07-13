@@ -1,5 +1,5 @@
 import './progressInfo.scss'
-export default function ProgressInfo({ totalTodos, completedTodos }) {
+export default function ProgressInfo({ totalTodos, completedTodos = 0 }) {
   return (
     <>
       <div className="statusBar">

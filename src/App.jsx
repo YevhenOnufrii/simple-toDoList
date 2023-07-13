@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Logger } from 'sass'
 import './App.scss'
 import TasksList from './TasksList'
 import Header from './components/Header/Header'
@@ -13,7 +14,7 @@ function App() {
   const addTask = () => {
     if (taskText) {
       const newTodo = {
-        id: 'ID' + Math.floor(Math.random() * 10000),
+        id: 'ID' + Math.floor(Math.random() * 1234),
         text: taskText,
         isCompleted: false,
       }
@@ -35,26 +36,64 @@ function App() {
     setTasksList(tasksList.filter(el => el.id !== id))
   }
 
-  const completeTask = event => {
+  const completeTask = (event, isCompleted) => {
     event.stopPropagation()
     const id = event.target.id
 
-    if (!completedTasks.some(el => el.id === id)) {
-      console.log('COMPLETED')
-      const newCompletedTask = tasksList.filter(el => el.id === id)
-      newCompletedTask[0].isCompleted = true
-      const newCompletedList = [...newCompletedTask, ...completedTasks]
-      deleteTask(event, id)
-      setCompletedTasks(newCompletedList)
-    } else {
+    // isCompleted default value === false
+    if (isCompleted) {
       console.log('Uncompleted')
-      const newListCompleted = completedTasks.filter(el => el.id !== id)
-      const combackTodo = completedTasks.filter(el => el.id === id)
-      combackTodo[0].isCompleted = false
-      const newTodosList = [...combackTodo, ...tasksList]
-      setTasksList(newTodosList)
-      setCompletedTasks(newListCompleted)
+      const uncompletedTask = tasksList.filter(el => el.id === id)[0]
+      // deleteTask(event, id)
+      uncompletedTask.isCompleted = false
+      setTasksList([...tasksList])
+    } else {
+      console.log('COMPLETED')
+      const completedTask = tasksList.filter(el => el.id === id)[0]
+      // deleteTask(event, id)
+      console.log(tasksList, 'after deletetask')
+      completedTask.isCompleted = true
+      setTasksList([...tasksList])
     }
+
+    console.log(tasksList)
+
+    // if (!completedTasks.some(el => el.id === id)) {
+    //   console.log('COMPLETED')
+    //   const completedTask = tasksList.filter(el => el.id === id)[0]
+    //   completedTask.isCompleted = true
+    //   setCompletedTasks(...tasksList, completedTask)
+
+    // newCompletedTask[0].isCompleted = true
+
+    // const newCompletedTask = tasksList.filter(el => el.id === id)
+    // const newCompletedList = [...newCompletedTask, ...completedTasks]
+    // deleteTask(event, id)
+    // setCompletedTasks(newCompletedList)
+    // } else {
+    //   console.log('Uncompleted')
+    //   const uncompletedTask = tasksList.filter(el => el.id === id)[0]
+    //   uncompletedTask.isCompleted = false
+    //   setCompletedTasks(uncompletedTask, ...tasksList)
+
+    // setCompletedTasks(
+    //   tasksList.sort((a, b) => {
+    //     if (a.isCompleted > b.isCompleted) return 1
+    //     return -1
+    //   })
+    // )
+
+    // const newListCompleted = completedTasks.filter(el => el.id !== id)
+    // const combackTodo = completedTasks.filter(el => el.id === id)
+    // combackTodo[0].isCompleted = false
+    // const newTodosList = [...combackTodo, ...tasksList]
+    // setTasksList(newTodosList)
+    // setCompletedTasks(newListCompleted)
+    // }
+    // tasksList.sort((a, b) => {
+    //   if (a.isCompleted > b.isCompleted) return 1
+    //   return -1
+    // })
   }
 
   return (

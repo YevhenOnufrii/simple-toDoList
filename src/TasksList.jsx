@@ -4,13 +4,18 @@ import Container from './components/Container_/Container'
 import ProgressInfo from './components/ProgressInfo/ProgressInfo'
 
 function Task({ id, text, deleteTask, completeTask, isCompleted }) {
-  console.log(isCompleted, 'Task')
+  // console.log(isCompleted, 'Task')
   return (
     // <li className="taskBox">
     <li className={isCompleted ? 'taskBox completedTaskStyles' : 'taskBox'}>
       {/* custom checkbox */}
       <div className="taskBox_customCheckbox">
-        <input className="taskBox_input" type="checkbox" id={id} onClick={e => completeTask(e)} />
+        <input
+          className="taskBox_input"
+          type="checkbox"
+          id={id}
+          onClick={e => completeTask(e, isCompleted)}
+        />
         <label htmlFor={id} className="taskBox_label"></label>
       </div>
 
@@ -51,6 +56,13 @@ export default function TasksList({
     setCompletedTasks([])
   }
 
+  tasksList.sort((a, b) => {
+    if (a.isCompleted > b.isCompleted) return 1
+    return -1
+  })
+
+  console.log(tasksList)
+
   return (
     <Container>
       <ProgressInfo {...{ totalTodos: tasksList.length, completedTodos: completedTasks.length }} />
@@ -69,11 +81,6 @@ export default function TasksList({
         {tasksList.map(el => (
           <Task key={el.id} {...{ ...el }} deleteTask={deleteTask} completeTask={completeTask} />
         ))}
-
-        {/* COMPLETED TODOS */}
-        {/* {completedTasks.map(el => (
-          <Task key={el.id} {...{ ...el }} deleteTask={deleteTask} completeTask={completeTask} />
-        ))} */}
       </ul>
 
       {/* CLIPBOARD */}
