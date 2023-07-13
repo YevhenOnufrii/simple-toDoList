@@ -44,6 +44,7 @@ function App() {
     // const task = event.target.parentElement.parentElement
     // console.log(task)
     if (!completedTasks.some(el => el.id === id)) {
+      console.log('COMPLETED')
       const newCompletedTask = tasksList.filter(el => el.id === id)
       const newCompletedList = [...newCompletedTask, ...completedTasks]
       deleteTask(event, id)
@@ -51,7 +52,7 @@ function App() {
       // task.classList.add('completedTaskStyles')
       //classList.add("mystyle")
     } else {
-      console.log('COMPLETED')
+      console.log('Uncompleted')
       const newListCompleted = completedTasks.filter(el => el.id !== id)
       const combackTodo = completedTasks.filter(el => el.id === id)
       const newTodosList = [...combackTodo, ...tasksList]

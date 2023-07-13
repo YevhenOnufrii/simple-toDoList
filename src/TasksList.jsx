@@ -4,7 +4,7 @@ import Container from './components/Container_/Container'
 import ProgressInfo from './components/ProgressInfo/ProgressInfo'
 
 function Task({ id, text, deleteTask, completeTask, isCompleted }) {
-  console.log(isCompleted, 'Task')
+  // console.log(isCompleted, 'Task')
   return (
     <li className="taskBox">
       {/* custom checkbox */}
@@ -69,7 +69,7 @@ export default function TasksList({
         ))}
       </ul>
       {/* CLIPBOARD */}
-      {!tasksList.length && <Clipboard />}
+      {!tasksList.length && !completedTasks.length && <Clipboard />}
     </Container>
   )
 }
