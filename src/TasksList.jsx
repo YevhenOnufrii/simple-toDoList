@@ -3,8 +3,8 @@ import Clipboard from './components/Clipboard/Clipboard'
 import Container from './components/Container_/Container'
 import ProgressInfo from './components/ProgressInfo/ProgressInfo'
 
-function Task({ id, text, deleteTask, completeTask }) {
-  // console.log(tasksList, 'Task')
+function Task({ id, text, deleteTask, completeTask, isCompleted }) {
+  console.log(isCompleted, 'Task')
   return (
     <li className="taskBox">
       {/* custom checkbox */}
@@ -12,8 +12,11 @@ function Task({ id, text, deleteTask, completeTask }) {
         <input className="taskBox_input" type="checkbox" id={id} onClick={e => completeTask(e)} />
         <label htmlFor={id} className="taskBox_label"></label>
       </div>
+
       {/* task text */}
       <h3 className="taskBox_text">{text}</h3>
+
+      {/* todo delete icon */}
       <div className="taskBox_deleteIcon " onClick={event => deleteTask(event, id)}>
         <svg
           width="35"
@@ -45,9 +48,8 @@ export default function TasksList({
     <Container>
       <ProgressInfo {...{ totalTodos: tasksList.length, completedTodos: completedTasks.length }} />
 
-      {!tasksList.length && <Clipboard />}
-
-      {!!tasksList.length && (
+      {/* DELETE ALL TODOS  BUTTON*/}
+      {(!!tasksList.length || !!completedTasks.length) && (
         <div className="deleteAllTodos-box">
           <button className="deleteAllTasks-btn" onClick={() => setTasksList([])}>
             Clear all tasks
@@ -56,10 +58,18 @@ export default function TasksList({
       )}
 
       <ul className="tasksList">
+        {/* TODOS */}
         {tasksList.map(el => (
           <Task key={el.id} {...{ ...el }} deleteTask={deleteTask} completeTask={completeTask} />
         ))}
+
+        {/* COMPLETED TODOS */}
+        {completedTasks.map(el => (
+          <Task key={el.id} {...{ ...el }} deleteTask={deleteTask} completeTask={completeTask} />
+        ))}
       </ul>
+      {/* CLIPBOARD */}
+      {!tasksList.length && <Clipboard />}
     </Container>
   )
 }

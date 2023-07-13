@@ -12,7 +12,11 @@ function App() {
 
   const addTask = () => {
     if (taskText) {
-      const newTodo = { id: tasksList.length, text: taskText }
+      const newTodo = {
+        id: 'ID' + Math.floor(Math.random() * 10000),
+        text: taskText,
+        isCompleted: false,
+      }
       const newTodosList = [newTodo, ...tasksList]
       setTasksList(newTodosList)
       setTaskText('')
@@ -23,21 +27,38 @@ function App() {
     if (e.key === 'Enter') addTask()
   }
 
-  console.log(tasksList)
-  console.log(completedTasks, 'completedTasks')
+  // console.log(tasksList)
+  // console.log(completedTasks, 'completedTasks')
 
   const deleteTask = (event, id) => {
     event.stopPropagation()
     setTasksList(tasksList.filter(el => el.id !== id))
+    setCompletedTasks(completedTasks.filter(el => el.id !== id))
   }
 
   const completeTask = event => {
     event.stopPropagation()
-    const id = parseInt(event.target.id)
-    const newCompletedTask = tasksList.filter(el => el.id === id)
-    const newCompletedList = [newCompletedTask, ...completedTasks]
-    setCompletedTasks(newCompletedList)
-    deleteTask(event, id)
+    // const id = parseInt(event.target.id)
+    const id = event.target.id
+
+    // const task = event.target.parentElement.parentElement
+    // console.log(task)
+    if (!completedTasks.some(el => el.id === id)) {
+      const newCompletedTask = tasksList.filter(el => el.id === id)
+      const newCompletedList = [...newCompletedTask, ...completedTasks]
+      deleteTask(event, id)
+      setCompletedTasks(newCompletedList)
+      // task.classList.add('completedTaskStyles')
+      //classList.add("mystyle")
+    } else {
+      console.log('COMPLETED')
+      const newListCompleted = completedTasks.filter(el => el.id !== id)
+      const combackTodo = completedTasks.filter(el => el.id === id)
+      const newTodosList = [...combackTodo, ...tasksList]
+      setTasksList(newTodosList)
+      setCompletedTasks(newListCompleted)
+      // task.classList.remove('completedTaskStyles')
+    }
   }
 
   return (

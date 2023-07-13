@@ -39,6 +39,13 @@
 
 // TASK
 
+.completedTaskStyles {
+  .taskBox_text {
+    color: $color_gray300;
+    text-decoration: line-through;
+  }
+}
+
 .taskBox {
   display: flex;
   gap: 12px;
