@@ -10,7 +10,7 @@ function App() {
   const [taskText, setTaskText] = useState('')
 
   const addTask = () => {
-    if (/\w+/gi.test(taskText)) {
+    if (/\S/gi.test(taskText)) {
       const newTodo = {
         id: 'ID' + Math.floor(Math.random() * 1234),
         text: taskText,
