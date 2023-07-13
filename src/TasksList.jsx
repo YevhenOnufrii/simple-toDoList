@@ -43,7 +43,13 @@ export default function TasksList({
   deleteTask,
   completeTask,
   completedTasks,
+  setCompletedTasks,
 }) {
+  const deleteAllTasks = () => {
+    setTasksList([])
+    setCompletedTasks([])
+  }
+
   return (
     <Container>
       <ProgressInfo {...{ totalTodos: tasksList.length, completedTodos: completedTasks.length }} />
@@ -51,7 +57,7 @@ export default function TasksList({
       {/* DELETE ALL TODOS  BUTTON*/}
       {(!!tasksList.length || !!completedTasks.length) && (
         <div className="deleteAllTodos-box">
-          <button className="deleteAllTasks-btn" onClick={() => setTasksList([])}>
+          <button className="deleteAllTasks-btn" onClick={() => deleteAllTasks()}>
             Clear all tasks
           </button>
         </div>
@@ -68,6 +74,7 @@ export default function TasksList({
           <Task key={el.id} {...{ ...el }} deleteTask={deleteTask} completeTask={completeTask} />
         ))}
       </ul>
+
       {/* CLIPBOARD */}
       {!tasksList.length && !completedTasks.length && <Clipboard />}
     </Container>

@@ -33,7 +33,6 @@ function App() {
   const deleteTask = (event, id) => {
     event.stopPropagation()
     setTasksList(tasksList.filter(el => el.id !== id))
-    setCompletedTasks(completedTasks.filter(el => el.id !== id))
   }
 
   const completeTask = event => {
@@ -84,6 +83,7 @@ function App() {
             deleteTask: deleteTask,
             completeTask: completeTask,
             completedTasks: completedTasks,
+            setCompletedTasks,
           }}
         />
       </Wrapper>
