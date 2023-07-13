@@ -1,0 +1,24 @@
+@import '../../css/variables.scss';
+
+.deleteAllTodos-box {
+  position: relative;
+  height: 60px;
+  .deleteAllTasks-btn {
+    padding: 16px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+    background-color: $red;
+    color: $gray-100;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &:hover {
+      background-color: $red-hover;
+    }
+  }
+}
