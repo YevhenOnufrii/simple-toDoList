@@ -37,27 +37,23 @@ function App() {
 
   const completeTask = event => {
     event.stopPropagation()
-    // const id = parseInt(event.target.id)
     const id = event.target.id
 
-    // const task = event.target.parentElement.parentElement
-    // console.log(task)
     if (!completedTasks.some(el => el.id === id)) {
       console.log('COMPLETED')
       const newCompletedTask = tasksList.filter(el => el.id === id)
+      newCompletedTask[0].isCompleted = true
       const newCompletedList = [...newCompletedTask, ...completedTasks]
       deleteTask(event, id)
       setCompletedTasks(newCompletedList)
-      // task.classList.add('completedTaskStyles')
-      //classList.add("mystyle")
     } else {
       console.log('Uncompleted')
       const newListCompleted = completedTasks.filter(el => el.id !== id)
       const combackTodo = completedTasks.filter(el => el.id === id)
+      combackTodo[0].isCompleted = false
       const newTodosList = [...combackTodo, ...tasksList]
       setTasksList(newTodosList)
       setCompletedTasks(newListCompleted)
-      // task.classList.remove('completedTaskStyles')
     }
   }
 
@@ -79,10 +75,10 @@ function App() {
         <TasksList
           {...{
             tasksList,
-            setTasksList: setTasksList,
-            deleteTask: deleteTask,
-            completeTask: completeTask,
-            completedTasks: completedTasks,
+            setTasksList,
+            deleteTask,
+            completeTask,
+            completedTasks,
             setCompletedTasks,
           }}
         />

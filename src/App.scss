@@ -39,33 +39,6 @@
 
 // TASK
 
-.completedTaskStyles {
-  .taskBox_text {
-    color: $color_gray300;
-    text-decoration: line-through;
-  }
-
-  input {
-    &:checked + label::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 4px;
-      left: 8px;
-      width: 5px;
-      height: 12px;
-      border: solid $gray-100;
-      border-width: 0 2px 2px 0;
-      transform: rotate(45deg);
-
-      @media (max-width: 400px) {
-        top: 6px;
-        left: 8px;
-      }
-    }
-  }
-}
-
 .taskBox {
   display: flex;
   gap: 12px;
@@ -104,10 +77,10 @@
       //   }
       // }
 
-      &:checked + label::before {
-        background-color: $PurpleDark;
-        border: 2px solid $PurpleDark;
-      }
+      // &:checked + label::before {
+      //   background-color: $PurpleDark;
+      //   border: 2px solid $PurpleDark;
+      // }
     }
 
     label {
@@ -157,4 +130,55 @@
     width: 30px;
     height: 30px;
   }
+}
+
+.completedTaskStyles {
+  .taskBox_text {
+    color: $color_gray300;
+    text-decoration: line-through;
+  }
+
+  label {
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 4px;
+      left: 8px;
+      width: 5px;
+      height: 12px;
+      border: solid $gray-100;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    &::before {
+      background-color: $PurpleDark;
+      border: 2px solid $PurpleDark;
+    }
+    @media (max-width: 400px) {
+      top: 6px;
+      left: 8px;
+    }
+  }
+
+  // input {
+
+  //   &:checked + label::after {
+  //     content: '';
+  //     display: block;
+  //     position: absolute;
+  //     top: 4px;
+  //     left: 8px;
+  //     width: 5px;
+  //     height: 12px;
+  //     border: solid $gray-100;
+  //     border-width: 0 2px 2px 0;
+  //     transform: rotate(45deg);
+
+  //     @media (max-width: 400px) {
+  //       top: 6px;
+  //       left: 8px;
+  //     }
+  //   }
+  // }
 }

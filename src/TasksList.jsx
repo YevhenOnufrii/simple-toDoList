@@ -4,9 +4,10 @@ import Container from './components/Container_/Container'
 import ProgressInfo from './components/ProgressInfo/ProgressInfo'
 
 function Task({ id, text, deleteTask, completeTask, isCompleted }) {
-  // console.log(isCompleted, 'Task')
+  console.log(isCompleted, 'Task')
   return (
-    <li className="taskBox">
+    // <li className="taskBox">
+    <li className={isCompleted ? 'taskBox completedTaskStyles' : 'taskBox'}>
       {/* custom checkbox */}
       <div className="taskBox_customCheckbox">
         <input className="taskBox_input" type="checkbox" id={id} onClick={e => completeTask(e)} />
@@ -70,9 +71,9 @@ export default function TasksList({
         ))}
 
         {/* COMPLETED TODOS */}
-        {completedTasks.map(el => (
+        {/* {completedTasks.map(el => (
           <Task key={el.id} {...{ ...el }} deleteTask={deleteTask} completeTask={completeTask} />
-        ))}
+        ))} */}
       </ul>
 
       {/* CLIPBOARD */}
