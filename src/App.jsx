@@ -7,6 +7,7 @@ import Wrapper from './components/Wrapper/Wrapper'
 
 function App() {
   const [tasksList, setTasksList] = useState([])
+  // const [tasksList, setTasksList] = useState(localStorage.getItem(tasksList) || [])
   const [taskText, setTaskText] = useState('')
 
   const addTask = () => {
